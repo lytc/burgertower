@@ -1,0 +1,1 @@
+<h2>Hãy like fanpage KFC để có thể chơi game này!</h2>

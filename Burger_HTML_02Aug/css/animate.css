@@ -1,0 +1,104 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* ANIMATE CLOUD */
+.cloud1, .cloud2, .cloud3 {
+	-moz-animation-name: moving;
+	-webkit-animation-name: moving;
+	-moz-animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-timing-function: linear;
+	-webkit-animation-timing-function: linear;
+}
+.cloud1 {
+	top: 250px;
+	-moz-animation-duration: 18s;
+	-webkit-animation-duration: 18s;
+	
+}
+.cloud2 {
+	top: 100px;
+	-moz-animation-duration: 30s;
+	-webkit-animation-duration: 30s;
+}
+.cloud3 {
+	top: 40px;
+	-moz-animation-duration: 20s;
+	-webkit-animation-duration: 20s;
+}
+
+    
+@-moz-keyframes moving {
+  from {left: -150px;}
+  to {left: 900px;}
+}
+
+@-webkit-keyframes moving {
+  from {left: -150px;}
+  to {left: 900px;}
+}
+
+.faceIcon {
+	-moz-animation-duration: 1s;
+	-webkit-animation-duration: 1s;
+	-moz-animation-name: faceAni;
+	-webkit-animation-name: faceAni;
+	-moz-animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-timing-function: linear;
+	-webkit-animation-timing-function: linear;
+	-moz-animation-direction: alternate;
+	-webkit-animation-direction: alternate;
+	}
+@-webkit-keyframes faceAni {
+  from {top: 0px;}
+  to {top: 15px;}
+}
+
+
+#mainNav ul.mainNav li:hover {
+	-moz-animation-duration: 0.5s;
+	-webkit-animation-duration: 0.5s;
+	-moz-animation-name: menuAni;
+	-webkit-animation-name: menuAni;
+	-moz-animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-timing-function: ease-in-out;
+	-webkit-animation-timing-function: ease-in-out;
+	-moz-animation-direction: alternate;
+	-webkit-animation-direction: alternate;
+	}
+
+@-webkit-keyframes menuAni {
+  from { 
+  	opacity: 1;
+	text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75);
+	
+	}
+  to { 
+  	opacity: 0.7;
+	text-shadow: 1px 3px 10px rgba(255, 198, 0, 0.75);
+	}
+}
+
+#popupInfo .popupBox_bgn .popupLogo, .boardInfo .logoKFC {
+	-moz-animation-duration: 0.5s;
+	-webkit-animation-duration: 0.5s;
+	-moz-animation-name: logoPopup;
+	-webkit-animation-name: logoPopup;
+	-moz-animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-timing-function: ease-in-out;
+	-webkit-animation-timing-function: ease-in-out;
+	-moz-animation-direction: alternate;
+	-webkit-animation-direction: alternate;
+	}
+
+@-webkit-keyframes logoPopup {
+  from {
+	  top: -48px;
+	}
+  to {
+	  top: -60px;
+	 }
+}

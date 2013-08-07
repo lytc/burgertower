@@ -1,0 +1,13 @@
+{
+    "name": "Burger Tower",
+    "require": {
+        "facebook/php-sdk": "dev-master",
+        "lazy/lazy": "dev-develop"
+    },
+    "autoload": {
+        "psr-0": {
+            "BurgerTower\\": "application/libs/",
+            "BurgerTower\\Model": "application/models/"
+        }
+    }
+}

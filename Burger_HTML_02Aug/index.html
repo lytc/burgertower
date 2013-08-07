@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>KFC Burger Home</title>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/main_style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/animate.css"/>
+	
+	<script type="text/javascript" language="javascript">
+	$( function() {
+		$('.burgerLayer, .cloudLayer, .cityLayer, .chiliLayer, .potatoLayer, .facebookLogo, .introContent, #mainNav').css({opacity: 0}, 0);
+		$('#popupInfo').hide().css({opacity: 0}, 0);
+		
+		$('.homePage').bgscroll({scrollSpeed:10, direction:'h' });
+		$('.cityLayer').animate({opacity: 1}, 1200, function(){
+			$('.potatoLayer').animate({opacity: 1, top: 394, left: 0}, 600, function(){
+				$('.burgerLayer').animate({bottom: 100, opacity: 1}, 1500, "easeOutBounce", function(){
+					$('.chiliLayer').animate({opacity: 1, left: 25}, 500, "", function(){
+						$('#mainNav').animate({opacity: 1, bottom: 30}, 400);
+					});
+					$('.introContent').animate({opacity: 1, width: 600}, 1000, "easeOutBounce", function(){
+						$('.cloudLayer, .facebookLogo').animate({opacity: 1}, "slow");
+					});
+				});	
+			}); 
+		});
+		
+		$('.faceIcon').click(function(){
+			$('#popupInfo').show().animate({opacity: 1}, 500);
+		});
+	});
+	
+	</script>
+</head>
+
+<body>
+<div id="HomeScene" class="mainScene homePage">
+	<div class="layoutD">
+		<img src="images/city.png" class="cityLayer"/>
+		<img src="images/potato.png" width="160" height="354" class="potatoLayer"/>
+		<img src="images/burger_logo.png" width="544" height="557" class="burgerLayer"/>
+		<img src="images/chili.png" class="chiliLayer"/>
+		<div class="cloudLayer">
+			<img src="images/cloud01.png" class="cloud1" />
+			<img src="images/cloud02.png" class="cloud2" />
+			<img src="images/cloud03.png" class="cloud3" />
+		</div>
+		<div class="facebookLogo">
+			<img src="images/face_icon.png" class="faceIcon" />
+		</div>
+        <div class="introText">
+        	<div class="introContent">
+            	<div class="leftBox"><div class="rightBox">
+                	<span>Xây tháp Burger, ăn KFC miễn phí, cơ hội chỉ có trong hè 2013 này. Nhiệm vụ của bạn chỉ là vận dụng sự khéo léo để xây một tòa tháp thật cao từ bánh burger, vừa giải trí thật vui lại được nhận nhiều quà, nhanh tay truy cập nào.</span>
+                </div></div>
+            </div>
+        </div>
+		<div id="mainNav">
+			<ul class="mainNav">
+				<li class="setRule">Thể lệ</li>
+				<li class="start">Bắt đầu</li>
+				<li class="topSix">Top 6</li>
+			</ul>
+		</div>
+	</div>
+	<div id="popupInfo">
+    	<div class="popupBox_bgn">
+        	<div class="popupLogo"></div>
+            <div class="popupMes">chúc mừng bạn đã tham gia <br/><span>“Burger tower” thành công</span></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
