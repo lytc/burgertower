@@ -45,6 +45,7 @@
         this.inDisk = []
         this.scores = []
         this.totalScore = 0
+        this.totalSuccessBurgers = 0
 
         this.floor = this.addFloor()
         this.disk = this.addDisk()
@@ -61,13 +62,14 @@
         ,burgerElasticity: .2
         ,burgerFriction: 1
         ,deadBurgerLimit: 5
+        ,offsetHeight: 0
 
         ,canvas2point: function(x, y) {
-            return v(x, this.height - y)
+            return v(x, this.height - y + this.offsetHeight)
         }
 
         ,point2canvas: function(point) {
-            return v(point.x, this.height - point.y)
+            return v(point.x, this.height - point.y + this.offsetHeight)
         }
 
         ,toDeg: function(rad) {
@@ -84,7 +86,19 @@
                     '/assets/images/burger/1.png': null,
                     '/assets/images/burger/2.png': null,
                     '/assets/images/burger/3.png': null,
-                    '/assets/images/burger/4.png': null
+                    '/assets/images/burger/4.png': null,
+                    '/assets/images/home_bgn.jpg': null,
+                    '/assets/images/city.png': null,
+                    '/assets/images/cloud01.png': null,
+                    '/assets/images/cloud02.png': null,
+                    '/assets/images/cloud03.png': null,
+                    '/assets/images/face_icon.png': null,
+                    '/assets/images/kfc_logo.png': null,
+                    '/assets/images/life.png': null,
+                    '/assets/images/loose.png': null,
+                    '/assets/images/playElement.png': null,
+                    '/assets/images/playScene.png': null,
+                    '/assets/images/burger01.png': null
                 }
 
                 var loader = new PxLoader()
@@ -99,8 +113,12 @@
                         me.images[i] = new Image()
                         me.images[i].src = i
                     }
+
                     me.assetsLoaded = true
-                    me.run()
+
+                    $.post('/play/start', function() {
+                        me.run()
+                    })
                 })
 
                 loader.start()
@@ -130,7 +148,6 @@
                 }
             };
 
-//            this.updatePlayTime()
             step(0)
         }
 
@@ -152,7 +169,7 @@
                 ,ctx = this.ctx
 
             // Draw shapes
-            ctx.strokeStyle = 'black'
+//            ctx.strokeStyle = 'black'
             ctx.clearRect(0, 0, this.width, this.height)
 
             this.space.eachShape(function(shape) {
@@ -236,6 +253,8 @@
                 return this
             }
 
+            $.post('/play/update', {'new': 76545})
+
             var me = this
                 ,space = this.space
                 ,burger = Random.item(burgers)
@@ -244,7 +263,7 @@
                 ,body = new cp.Body(this.burgerMass, cp.momentForBox(this.burgerMass, width, height))
                 ,shape = new cp.BoxShape(body, width, height)
 
-            body.setPos(v(Random(width / 2, this.width -width / 2), this.height + height))
+            body.setPos(v(Random(width / 2, this.width -width / 2), this.height + height + this.offsetHeight))
             shape.setElasticity(this.burgerElasticity)
             shape.setFriction(this.burgerFriction)
             shape.type = 'burger'
@@ -259,6 +278,8 @@
         }
 
         ,removeBurger: function(burger) {
+            $.post('/play/update', {loose: 9841})
+
             burger.dead = true
             this.deadBurgerCount++
 
@@ -280,7 +301,7 @@
         }
 
         ,initializeMouse: function() {
-            this.mouse = v(this.width / 2, 0)
+//            this.mouse = v(this.width / 2, 0)
 
             var me = this
                 ,mouseBody = this.mouseBody = new cp.Body(Infinity, Infinity)
@@ -292,7 +313,10 @@
             this.space.addConstraint(mouseJoint)
 
             $(this.canvas).on('mousemove', function(e) {
-                mouseBody.p.x = e.clientX - 488
+                if (me.gameOver) {
+                    return
+                }
+                mouseBody.p.x = e.clientX - $(me.canvas).offset().left
             })
         }
 
@@ -317,7 +341,7 @@
                 var a = arbiter.a
                     ,b = arbiter.b
 
-                if (a.dead || b.dead) {
+                if (a.dead || b.dead || (a.type != 'burger' && b.type != 'burger') || (a.inDisk && b.inDisk)) {
                     return
                 }
 
@@ -373,10 +397,6 @@
         ,initializePlayTime: function() {
             var me = this
                 ,startPlayTime
-                ,playTime
-                ,s
-                ,m
-                ,h
 
             setInterval(function() {
                 if (!me.running) {
@@ -384,19 +404,9 @@
                 }
 
                 startPlayTime || (startPlayTime = (new Date).getTime())
-                playTime = (new Date).getTime() - startPlayTime
+                me.playTime = (new Date).getTime() - startPlayTime
 
-                s = Math.round(playTime / 1000)
-                m = Math.round(s / 60)
-                h = Math.round(m / 60)
-                m = m % 60
-                s = s % 60
-
-                h = ('0' + h).substr(-2)
-                m = ('0' + m).substr(-2)
-                s = ('0' + s).substr(-2)
-
-                $('.timming .numOutline').text([h, m, s].join(':'))
+                $('.timming .numOutline').text(me.getPlayTime(true))
             }, 1000)
         }
 
@@ -410,7 +420,7 @@
         }
 
         ,addToDisk: function(burger) {
-            if (burger.inDisk) {
+            if (this.gameOver || burger.inDisk) {
                 return this
             }
 
@@ -456,11 +466,48 @@
             }
 
             this.inDisk.push(burger)
+
+            this.updateOffsetHeight()
+        }
+
+        ,updateOffsetHeight: function(offsetHeight) {
+            var me = this
+
+            if (undefined === offsetHeight) {
+                var totalBurgerHeight = 0
+
+                for (var i = 0, len = this.inDisk.length; i < len; i++) {
+                    totalBurgerHeight += this.inDisk[i].height
+                }
+
+                offsetHeight = totalBurgerHeight - 200
+                if (offsetHeight < 0) {
+                    offsetHeight = 0
+                }
+
+            }
+
+            if (offsetHeight != this.offsetHeight) {
+                var diff = offsetHeight - this.offsetHeight
+                    ,step = diff / 60
+
+                clearInterval(this.scaleOffsetIntervalId)
+                this.scaleOffsetIntervalId = setInterval(function() {
+                    me.offsetHeight += step
+
+                    diff -= step
+                    if (step > 0 && diff <= 0 || step < 0 && diff >= 0) {
+                        clearInterval(me.scaleOffsetIntervalId)
+                    }
+                }, 1000 / 60)
+            }
         }
 
         ,removeFromDisk: function(burger) {
             burger.inDisk = false
             this.inDisk.splice(this.inDisk.indexOf(burger), 1)
+
+            this.updateOffsetHeight()
             return this
         }
 
@@ -474,6 +521,9 @@
                 score = 3
             }
 
+            $.post('/play/update', {'score': score})
+
+            this.totalSuccessBurgers++
             this.totalScore += score
             this.scores.push({score: score, pos: pos})
 
@@ -482,7 +532,51 @@
         }
 
         ,endGame: function() {
+            if (this.gameOver) {
+                return this
+            }
+
             this.gameOver = true
+
+            var me = this
+                ,popup = $('#messPopup')
+
+            me.updateOffsetHeight(0)
+
+            $.post('/play/end', function(result) {
+                setTimeout(function() {
+                    me.running = false
+                    popup.show().fadeOut(0).fadeIn()
+                    popup.find('.numScore').text(me.totalScore)
+                    popup.find('.play-time').text(me.getPlayTime(result.time, true))
+                    popup.find('.num-burger').text(me.totalSuccessBurgers)
+                }, 1000)
+            })
+
+        }
+
+        ,getPlayTime: function(time, friendly) {
+            if ('boolean' == typeof time) {
+                friendly = time
+                time = this.playTime
+            }
+
+            if (!friendly) {
+                return time
+            }
+
+            var s = Math.floor(this.playTime / 1000)
+                ,m = Math.floor(s / 60)
+                ,h = Math.floor(m / 60)
+
+            m = m % 60
+            s = s % 60
+
+            h = ('0' + h).substr(-2)
+            m = ('0' + m).substr(-2)
+            s = ('0' + s).substr(-2)
+
+            return [h, m, s].join(':')
         }
     }
 

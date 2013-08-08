@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>KFC Burger Home</title>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/main_style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/animate.css"/>
+	
+	<script type="text/javascript" language="javascript">
+	$( function() {
+		$('.homePage').bgscroll({scrollSpeed:10, direction:'h' });
+		
+	});
+	
+	</script>
+</head>
+
+<body>
+<div id="HomeScene" class="mainScene playPage">
+	<div class="cloudLayer">
+        <img src="images/cloud01.png" class="cloud1" />
+        <img src="images/cloud02.png" class="cloud2" />
+        <img src="images/cloud03.png" class="cloud3" />
+    </div>
+    <div class="cityLayer"></div>
+    <div class="facebookLogo">
+        <img src="images/face_icon.png" class="faceIcon" />
+    </div>
+    <div class="playElement"></div>
+	<div class="layoutGame">
+    	<div class="colLeft">
+        	<div class="logoKFC"></div>
+            <div class="timming">
+            	<div class="numOutline">00:01:05</div>
+            </div>
+            <div class="totalScore">
+            	<div class="numOutline">08</div>
+            </div>
+            <div class="burgerKind">
+            	<ul>
+                	<li><span class="icon Burger01"></span>1</li>
+                    <li><span class="icon Burger01"></span>0</li>
+                    <li><span class="icon Burger01"></span>0</li>
+                    <li><span class="icon Burger01"></span>0</li>
+                    <li><span class="icon Burger01"></span>0</li>
+                </ul>
+            </div>
+            <div class="memberInfo">
+            	<div class="accountCont">
+                	<div class="thumb">
+                    	<img src="images/thumb.jpg" width="180" height="180" class="thumbImg" />
+                    </div>
+                    <div class="accName"><span class="name">whoahohoha</span><span class="desc">Thành viên thứ 7</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="colRight">
+        	<div class="lifeNum">
+            	<ul>
+                	<li><span class="loose"></span></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div id="playStage" class="playStage">
+            	<div class="score">+3</div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="messPopup">
+    	<div class="popupBox">
+        	<div class="gameOver">
+            	<img src="images/game-over.png" width="430" height="89" class="gameOverText" />
+                <div class="overInfo">
+                	<h3>Tổng số điểm của bạn là</h3>
+                    <div class="numScore">50</div>
+                    <div class="timer">Thời gian chơi: 00 : 00 : 45</div>
+                    <div class="numBurger">Xếp được 1 burger</div>
+                    <div class="saveBtn">
+                    	<button>Lưu Điểm</button>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="logoKFC"></div>
+        <div class="burgerSymbol"></div>
+        <div id="mainNav" class="popupMenu">
+			<ul class="mainNav">
+				<li class="setRule">Thể lệ</li>
+				<li class="start current">Chơi lại</li>
+				<li class="topSix">Top 6</li>
+			</ul>
+		</div>
+    </div>
+</div>
+</body>
+</html>

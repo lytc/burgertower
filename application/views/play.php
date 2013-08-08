@@ -2,6 +2,7 @@
 <? $this->capture('javascripts', $this->javascriptTag('/assets/vendor/chipmunk')) ?>
 <? $this->capture('javascripts', $this->javascriptTag('/assets/vendor/PxLoader/PxLoader.js')) ?>
 <? $this->capture('javascripts', $this->javascriptTag('/assets/vendor/PxLoader/PxLoaderImage.js')) ?>
+<? $this->capture('javascripts', $this->javascriptTag('/assets/vendor/pixi.js')) ?>
 <?= $this->capture('javascripts', $this->javascriptTag('//cdnjs.cloudflare.com/ajax/libs/stats.js/r11/Stats.js')) ?>
 <? $this->capture('javascripts', $this->javascriptTag('/assets/js/random')) ?>
 <? $this->capture('javascripts', $this->javascriptTag('/assets/js/game')) ?>
@@ -51,8 +52,34 @@
                 </ul>
             </div>
             <div id="playStage" class="playStage">
-                <canvas id="canvas" width="588" height="614"></canvas>
+                <canvas id="canvas" width="588" height="614" style="cursor: none"></canvas>
             </div>
+        </div>
+    </div>
+
+    <div id="messPopup" style="display: none">
+        <div class="popupBox">
+            <div class="gameOver">
+                <img src="/assets/images/game-over.png" width="430" height="89" class="gameOverText" />
+                <div class="overInfo">
+                    <h3>Tổng số điểm của bạn là</h3>
+                    <div class="numScore"></div>
+                    <div class="timer">Thời gian chơi: <span class="play-time"></span></div>
+                    <div class="numBurger">Xếp được <span class="num-burger"></span> burger</div>
+<!--                    <div class="saveBtn">-->
+<!--                        <button>Lưu Điểm</button>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div class="logoKFC"></div>
+        <div class="burgerSymbol"></div>
+        <div id="mainNav" class="popupMenu">
+            <ul class="mainNav">
+                <li class="setRule"><a href="/the-le">Thể lệ</a></li>
+                <li class="start"><a href="/play">Chơi lại</a></li>
+                <li class="topSix"><a href="/top">Top 6</a></li>
+            </ul>
         </div>
     </div>
 </div>
