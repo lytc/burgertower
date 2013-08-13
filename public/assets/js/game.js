@@ -13,20 +13,20 @@
         ,burgers = [
             {
                 src: '/assets/images/burger/1.png',
-                width: 100,
-                height: 75
+                width: 80,
+                height: 55
             },{
                 src: '/assets/images/burger/2.png',
-                width: 100,
-                height: 83
+                width: 80,
+                height: 55
             },{
                 src: '/assets/images/burger/3.png',
-                width: 100,
-                height: 81
+                width: 80,
+                height: 55
             },{
                 src: '/assets/images/burger/4.png',
-                width: 100,
-                height: 74
+                width: 80,
+                height: 55
             }
         ]
 
@@ -38,17 +38,22 @@
         space.collisionSlop = 0
         space.sleepTimeThreshold = 0.5
 
-        var canvas = this.canvas = document.getElementById('canvas')
-            ,ctx = this.ctx = canvas.getContext('2d')
+//        var canvas = this.canvas = document.getElementById('canvas')
+//            ,ctx = this.ctx = canvas.getContext('2d')
+
+        this.stage = new PIXI.Stage()
+        this.renderer = PIXI.autoDetectRenderer(this.width, this.height, null, true)
+//        this.renderer = new PIXI.CanvasRenderer(this.width, this.height, null, true)
+        $('#playStage').append(this.renderer.view)
 
         this.deadBurgerCount = 0
-        this.inDisk = []
+        this.inDish = []
         this.scores = []
         this.totalScore = 0
         this.totalSuccessBurgers = 0
 
         this.floor = this.addFloor()
-        this.disk = this.addDisk()
+        this.dish = this.addDish()
 
         this.initializeMouse()
         this.initializeCollisionHandler()
@@ -98,7 +103,8 @@
                     '/assets/images/loose.png': null,
                     '/assets/images/playElement.png': null,
                     '/assets/images/playScene.png': null,
-                    '/assets/images/burger01.png': null
+                    '/assets/images/burger01.png': null,
+                    '/assets/images/dia.png': null
                 }
 
                 var loader = new PxLoader()
@@ -166,46 +172,30 @@
 
         ,draw: function() {
             var me = this
-                ,ctx = this.ctx
-
-            // Draw shapes
-//            ctx.strokeStyle = 'black'
-            ctx.clearRect(0, 0, this.width, this.height)
-
             this.space.eachShape(function(shape) {
                 shape.draw(me)
             })
 
+            this.renderer.render(this.stage)
             this.drawScore()
         }
 
         ,drawScore: function() {
             var me = this
-                ,ctx = me.ctx
 
             $.each(this.scores, function(index, score) {
                 if (!score.draw) {
                     score.pos.x -= 50
                     score.opacity = 1
                     score.draw = function() {
-                        ctx.save()
-                        ctx.font = 'bold 80px Oxydesign'
-                        ctx.fillStyle = '#900'
-                        ctx.globalAlpha = score.opacity
-
-
-                        var text = '+' + score.score
-                            ,blur = 20
-
-                        ctx.textBaseline = 'top'
-                        ctx.shadowColor = '#F90'
-                        ctx.shadowOffsetX = 0
-                        ctx.shadowOffsetY = 0
-                        ctx.shadowBlur = blur
-                        ctx.fillText(text, score.pos.x, score.pos.y)
-                        ctx.restore()
-                        score.pos.y -= 1.5
-                        score.opacity -= 1 / 90
+                        if (!this.text) {
+                            this.text = new PIXI.Text('+' + score.score, {font: 'bold 80px Oxydesig', fill: '#900', stroke: "#F90", strokeThickness: 6})
+                            this.text.position.x = score.pos.x
+                            this.text.position.y = score.pos.y
+                            me.stage.addChild(this.text)
+                        }
+                        this.text.position.y -= 1.5
+                        this.text.alpha -= 1 / 90
                     }
                     setTimeout(function() {
                         me.scores.splice(index, 1)
@@ -228,24 +218,25 @@
             return floor
         }
 
-        ,addDisk: function() {
+        ,addDish: function() {
             var space = this.space
-                ,width = 100
+                ,width = 150
                 ,height = 20
                 ,left = this.width / 2
                 ,body = space.addBody(new cp.Body(5, cp.momentForBox(5, width, height)))
-                ,disk = space.addShape(new cp.BoxShape(body, width, height))
+                ,dish = space.addShape(new cp.BoxShape(body, width, height))
 
             body.setPos(v(left, height / 2))
-            disk.setElasticity(0)
-            disk.setFriction(.5)
-            disk.type = 'disk'
-            disk.width = width
-            disk.height = height
+            dish.setElasticity(0)
+            dish.setFriction(.5)
+            dish.type = 'dish'
+            dish.imageSrc = '/assets/images/dia.png'
+            dish.width = width
+            dish.height = height
 
             space.addConstraint(new cp.GrooveJoint(this.floor.body, body, v(-this.width, 10), v(this.width * 2, 10), v(0, 0)))
 
-            return disk
+            return dish
         }
 
         ,addBurger: function() {
@@ -301,22 +292,20 @@
         }
 
         ,initializeMouse: function() {
-//            this.mouse = v(this.width / 2, 0)
-
             var me = this
-                ,mouseBody = this.mouseBody = new cp.Body(Infinity, Infinity)
-                ,diskBody = this.disk.body
-                ,mouseJoint = self.mouseJoint = new cp.PivotJoint(mouseBody, diskBody, v(0,0), v(0, 0))
+                ,mouseBody = new cp.Body(Infinity, Infinity)
+                ,dishBody = this.dish.body
+                ,mouseJoint = self.mouseJoint = new cp.PivotJoint(mouseBody, dishBody, v(0,0), v(0, 0))
             mouseBody.setPos(v(this.width / 2, 10))
             mouseJoint.maxForce = 50000
             mouseJoint.errorBias = Math.pow(1 - 0.15, 60)
             this.space.addConstraint(mouseJoint)
 
-            $(this.canvas).on('mousemove', function(e) {
+            $(this.renderer.view).on('mousemove', function(e) {
                 if (me.gameOver) {
                     return
                 }
-                mouseBody.p.x = e.clientX - $(me.canvas).offset().left
+                mouseBody.p.x = e.clientX - $(me.renderer.view).offset().left
             })
         }
 
@@ -329,8 +318,8 @@
 
                 if ((a.dead || b.dead) && ('burger' == a.type || 'burger' == b.type)) {
                     switch (a.type + '-' + b.type) {
-                        case 'burger-disk':
-                        case 'disk-burger':
+                        case 'burger-dish':
+                        case 'dish-burger':
                         case 'burger-burger':
                             return false
                     }
@@ -341,7 +330,7 @@
                 var a = arbiter.a
                     ,b = arbiter.b
 
-                if (a.dead || b.dead || (a.type != 'burger' && b.type != 'burger') || (a.inDisk && b.inDisk)) {
+                if (a.dead || b.dead || (a.type != 'burger' && b.type != 'burger') || (a.inDish && b.inDish)) {
                     return
                 }
 
@@ -353,12 +342,12 @@
                         me.removeBurger(b)
                         break
 
-                    case 'burger-disk':
+                    case 'burger-dish':
                         a = arbiter.b
                         b = arbiter.a
-                    case 'disk-burger':
-                        if (v.dist(a.body.p, b.body.p) < 70 && !b.inDisk) {
-                            me.addToDisk(b)
+                    case 'dish-burger':
+                        if (v.dist(a.body.p, b.body.p) < 70 && !b.inDish) {
+                            me.addToDish(b)
                             var dist = v.dist(a.body.p, b.body.p)
                                 ,minDist = (a.height + b.height) / 2
                                 ,offset = dist - minDist
@@ -367,17 +356,17 @@
                         break
 
                     case 'burger-burger':
-                        if ((a.inDisk || b.inDisk) && (a == me.currentBurger || b == me.currentBurger)) {
-                            if (b.inDisk) {
+                        if ((a.inDish || b.inDish) && (a == me.currentBurger || b == me.currentBurger)) {
+                            if (b.inDish) {
                                 var tmp = a
                                 a = b
                                 b = tmp
                             }
 
-                            if (me.inDisk.indexOf(a) != -1) {
+                            if (me.inDish.indexOf(a) != -1) {
                                 var dist = v.dist(a.body.p, b.body.p)
                                 if (dist < a.height / 2 + b.height / 2 + 20 && Math.abs(me.toDeg(a.body.a)) < 30) {
-                                    me.addToDisk(b)
+                                    me.addToDish(b)
 
                                     var minDist = (a.height + b.height) / 2
                                         ,offset = dist - minDist
@@ -419,18 +408,18 @@
             return this
         }
 
-        ,addToDisk: function(burger) {
-            if (this.gameOver || burger.inDisk) {
+        ,addToDish: function(burger) {
+            if (this.gameOver || burger.inDish) {
                 return this
             }
 
             var me = this
 
-            burger.inDisk = true
+            burger.inDish = true
 
-            if (!this.inDisk.length) {
-                var joint1 = new cp.DampedSpring(this.disk.body, burger.body, v(-100,10), v(-burger.width / 2,-burger.height / 2), 10, 1000,.3)
-                    ,joint2 = new cp.DampedSpring(this.disk.body, burger.body, v(100,10), v(burger.width / 2,-burger.height / 2), 10, 1000,.3)
+            if (!this.inDish.length) {
+                var joint1 = new cp.DampedSpring(this.dish.body, burger.body, v(-this.dish.width,10), v(-burger.width / 2,-burger.height / 2), 10, 1000,.3)
+                    ,joint2 = new cp.DampedSpring(this.dish.body, burger.body, v(this.dish.width,10), v(burger.width / 2,-burger.height / 2), 10, 1000,.3)
                     joint1.errorBias = Math.pow(1 - .15, 60)
                     joint2.errorBias = Math.pow(1 - .15, 60)
                     joint1.maxForce = 10
@@ -440,9 +429,9 @@
                     me.space.addConstraint(joint2)
                 })
             } else {
-                var lastInDisk = this.inDisk[this.inDisk.length - 1]
-                var joint1 = new cp.DampedSpring(lastInDisk.body, burger.body, v(-lastInDisk.width / 2, 0), v(-burger.width / 2, -burger.height / 2), 10, 100,.3)
-                    ,joint2 = new cp.DampedSpring(lastInDisk.body, burger.body, v(lastInDisk.width / 2, 0), v(burger.width / 2, -burger.height / 2), 10, 100,.3)
+                var lastInDish = this.inDish[this.inDish.length - 1]
+                var joint1 = new cp.DampedSpring(lastInDish.body, burger.body, v(-lastInDish.width, 0), v(-burger.width / 2, -burger.height / 2), 10, 400,.3)
+                    ,joint2 = new cp.DampedSpring(lastInDish.body, burger.body, v(lastInDish.width, 0), v(burger.width / 2, -burger.height / 2), 10, 400,.3)
                 joint1.errorBias = Math.pow(1 - .15, 60)
                 joint2.errorBias = Math.pow(1 - .15, 60)
 
@@ -452,7 +441,7 @@
                             me.space.removeConstraint(joint1)
                             me.space.removeConstraint(joint2)
                         })
-                        me.removeFromDisk(this.b.shapeList[0])
+                        me.removeFromDish(this.b.shapeList[0])
                         me.endGame()
                     }
                 }
@@ -465,7 +454,7 @@
                 })
             }
 
-            this.inDisk.push(burger)
+            this.inDish.push(burger)
 
             this.updateOffsetHeight()
         }
@@ -476,8 +465,8 @@
             if (undefined === offsetHeight) {
                 var totalBurgerHeight = 0
 
-                for (var i = 0, len = this.inDisk.length; i < len; i++) {
-                    totalBurgerHeight += this.inDisk[i].height
+                for (var i = 0, len = this.inDish.length; i < len; i++) {
+                    totalBurgerHeight += this.inDish[i].height
                 }
 
                 offsetHeight = totalBurgerHeight - 200
@@ -503,15 +492,19 @@
             }
         }
 
-        ,removeFromDisk: function(burger) {
-            burger.inDisk = false
-            this.inDisk.splice(this.inDisk.indexOf(burger), 1)
+        ,removeFromDish: function(burger) {
+            burger.inDish = false
+            this.inDish.splice(this.inDish.indexOf(burger), 1)
 
             this.updateOffsetHeight()
             return this
         }
 
         ,addScore: function(offset, pos) {
+            if (this.gameOver) {
+                return this
+            }
+
             pos = this.point2canvas(pos)
 
             var score = 1
@@ -591,60 +584,40 @@
     };
 
     cp.SegmentShape.prototype.draw = function(app) {
-        if (this.noRender) {
-            return
-        }
-        var ctx = app.ctx
-            ,oldLineWidth = ctx.lineWidth;
-
-        ctx.lineWidth = Math.max(1, this.r * 2)
-        drawLine(app, this.ta, this.tb)
-        ctx.lineWidth = oldLineWidth
+//        if (this.noRender) {
+//            return
+//        }
+//        var ctx = app.ctx
+//            ,oldLineWidth = ctx.lineWidth;
+//
+//        ctx.lineWidth = Math.max(1, this.r * 2)
+//        drawLine(app, this.ta, this.tb)
+//        ctx.lineWidth = oldLineWidth
     }
 
     cp.PolyShape.prototype.draw = function(app) {
-        var ctx = app.ctx
-            ,verts = this.tVerts
+        var verts = this.tVerts
             ,len = verts.length
             ,lastPoint = app.point2canvas(cp.v(verts[len - 2], verts[len - 1]))
 
         if (this.imageSrc) {
-            var angle = -cp.v.toangle(this.body.rot)
-                ,image = app.images[this.imageSrc]
-                ,width = image.width
-                ,height = image.height
-            ctx.save()
+            if (!this.sprite) {
+                this.sprite = PIXI.Sprite.fromImage(this.imageSrc)
+                this.sprite.anchor.x = 1
+                this.sprite.anchor.y = 1
+                app.stage.addChild(this.sprite)
+            }
+
+            this.sprite.rotation = -this.body.a
+            this.sprite.position.x = lastPoint.x
+            this.sprite.position.y = lastPoint.y
 
             if (this.dead) {
                 this.opacity || (this.opacity = 1)
                 this.opacity -= 1/120
-                ctx.globalAlpha = this.opacity
+                this.sprite.alpha = this.opacity
             }
-
-            ctx.translate(lastPoint.x, lastPoint.y)
-            ctx.rotate(angle)
-            ctx.drawImage(
-                image,
-                -width,
-                -height
-            )
-            ctx.restore()
-            return
         }
-
-        ctx.beginPath()
-
-        var verts = this.tVerts
-            ,len = verts.length
-            ,lastPoint = app.point2canvas(v(verts[len - 2], verts[len - 1]))
-        ctx.moveTo(lastPoint.x, lastPoint.y)
-
-        for(var i = 0; i < len; i += 2){
-            var p = app.point2canvas(v(verts[i], verts[i+1]))
-            ctx.lineTo(p.x, p.y)
-        }
-        ctx.fill()
-        ctx.stroke()
     };
 
     (new Game()).run()

@@ -2,7 +2,7 @@
 <? $this->capture('javascripts', $this->javascriptTag('/assets/vendor/chipmunk')) ?>
 <? $this->capture('javascripts', $this->javascriptTag('/assets/vendor/PxLoader/PxLoader.js')) ?>
 <? $this->capture('javascripts', $this->javascriptTag('/assets/vendor/PxLoader/PxLoaderImage.js')) ?>
-<? $this->capture('javascripts', $this->javascriptTag('/assets/vendor/pixi.js')) ?>
+<? $this->capture('javascripts', $this->javascriptTag('/assets/vendor/pixi.dev.js')) ?>
 <?= $this->capture('javascripts', $this->javascriptTag('//cdnjs.cloudflare.com/ajax/libs/stats.js/r11/Stats.js')) ?>
 <? $this->capture('javascripts', $this->javascriptTag('/assets/js/random')) ?>
 <? $this->capture('javascripts', $this->javascriptTag('/assets/js/game')) ?>
@@ -52,7 +52,6 @@
                 </ul>
             </div>
             <div id="playStage" class="playStage">
-                <canvas id="canvas" width="588" height="614" style="cursor: none"></canvas>
             </div>
         </div>
     </div>

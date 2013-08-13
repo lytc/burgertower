@@ -44,11 +44,11 @@
 
             this.deadBurgerCount = 0
             this.score = 0
-            this.inDisk = []
+            this.inDish = []
 
             this.floor = this.addFloor()
             this.addWalls()
-            this.disk = this.addDisk()
+            this.dish = this.addDish()
 
             this.initKeyNav()
             this.initCollisionHandler()
@@ -147,7 +147,7 @@
                 wall2.noRender = true
             }
 
-            ,addDisk: function() {
+            ,addDish: function() {
                 var space = this.space
                     ,width = 100
                     ,height = 20
@@ -194,7 +194,7 @@
             ,removeBurger: function(burger) {
                 if (!burger.timeoutRemoveId) {
                     var space = this.space
-                    this.removeFromDisk(burger)
+                    this.removeFromDish(burger)
 
                     burger.dead = true
                     this.deadBurgerCount++
@@ -268,45 +268,45 @@
                             me.removeBurger(a)
                             break
 
-                        case 'disk-burger':
-                            me.addToDisk(b)
+                        case 'dish-burger':
+                            me.addToDish(b)
                             break
     //
-                        case 'burger-disk':
-                            me.addToDisk(a)
+                        case 'burger-dish':
+                            me.addToDish(a)
                             break
     //
                         case 'burger-burger':
-                            if (-1 == me.inDisk.indexOf(a) && -1 != me.inDisk.indexOf(b)) {
-                                me.addToDisk(a)
+                            if (-1 == me.inDish.indexOf(a) && -1 != me.inDish.indexOf(b)) {
+                                me.addToDish(a)
                             }
 
-                            if (-1 == me.inDisk.indexOf(b) && -1 != me.inDisk.indexOf(a)) {
-                                me.addToDisk(b)
+                            if (-1 == me.inDish.indexOf(b) && -1 != me.inDish.indexOf(a)) {
+                                me.addToDish(b)
                             }
                     }
                 })
             }
 
-            ,addToDisk: function(burger) {
+            ,addToDish: function(burger) {
                 if (burger != this.currentBurger) {
                     return this
                 }
 
-                if (-1 !== this.inDisk.indexOf(burger)) {
+                if (-1 !== this.inDish.indexOf(burger)) {
                     return this
                 }
 
                 this.addBurger()
 
-                this.inDisk.push(burger)
+                this.inDish.push(burger)
                 return this
             }
 
-            ,removeFromDisk: function(burger) {
-                var index = this.inDisk.indexOf(burger)
+            ,removeFromDish: function(burger) {
+                var index = this.inDish.indexOf(burger)
                 if (-1 != index) {
-                    this.inDisk.splice(index, 1)
+                    this.inDish.splice(index, 1)
                 }
                 return this
             }
@@ -324,8 +324,8 @@
                         me.running = false
 
                         var score = 0
-                        for (var i = 0; i < me.inDisk.length; i++) {
-                            me.addScoreAffect(i + 1, me.inDisk[i].body.getPos())
+                        for (var i = 0; i < me.inDish.length; i++) {
+                            me.addScoreAffect(i + 1, me.inDish[i].body.getPos())
                             score += i + 1
                         }
                     }
