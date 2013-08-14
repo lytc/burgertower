@@ -4,7 +4,7 @@
     <div class="layoutD">
         <img src="/assets/images/city.png" class="cityLayer"/>
         <img src="/assets/images/potato.png" width="160" height="354" class="potatoLayer"/>
-        <img src="/assets/images/burger_logo.png" width="544" height="557" class="burgerLayer"/>
+        <img src="/assets/images/burger_logo.png" width="544" height="500" class="burgerLayer"/>
         <img src="/assets/images/chili.png" class="chiliLayer"/>
         <div class="cloudLayer">
             <img src="/assets/images/cloud01.png" class="cloud1" />
@@ -12,7 +12,9 @@
             <img src="/assets/images/cloud03.png" class="cloud3" />
         </div>
         <div class="facebookLogo">
+        	<a href="#" >
             <img src="/assets/images/face_icon.png" class="faceIcon share-fb" />
+            </a>
         </div>
         <div class="introText">
             <div class="introContent">

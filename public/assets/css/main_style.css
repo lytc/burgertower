@@ -23,6 +23,31 @@
 	font-weight: bold;
 }
 
+@-moz-document url-prefix(http://),url-prefix(https://) {
+	scrollbar {
+	   -moz-appearance: none !important;
+	   background: rgb(0,255,0) !important;
+	}
+	thumb,scrollbarbutton {
+	   -moz-appearance: none !important;
+	   background-color: rgb(0,0,255) !important;
+	}
+	
+	thumb:hover,scrollbarbutton:hover {
+	   -moz-appearance: none !important;
+	   background-color: rgb(255,0,0) !important;
+	}
+	
+	scrollbarbutton {
+	   display: none !important;
+	}
+	
+	scrollbar[orient="vertical"] {
+	  min-width: 5px !important;
+	}
+}
+
+
 h1, h2, h3, h4 {
 	font-family: UTM_Cookies;}
 .clear {
@@ -30,7 +55,7 @@ h1, h2, h3, h4 {
 
 .mainScene {
 	width: 810px;
-	height: 815px;
+	height: 700px;
 	display: block;
 	margin: 0px auto;
 	position: relative;
@@ -60,13 +85,13 @@ img.burgerLayer {
 img.chiliLayer {
 	position: absolute;
 	z-index: 2;
-	top: 585px;
+	top: 485px;
 	left: 70px;
 }
 
 img.potatoLayer {
 	position: absolute;
-	top: 494px;
+	top: 394px;
 	left: -50px;
 }
 
@@ -74,8 +99,10 @@ img.potatoLayer {
 	width: 274px;
 	height: 59px;
 	position: absolute;
-	top: 200px;
-	right: 20px;}
+	top: 110px;
+	right: 20px;
+	z-index: 1000;}
+
 .facebookLogo .faceIcon {
 	cursor: pointer;
 	position: absolute;
@@ -85,7 +112,7 @@ div.cloudLayer {
 	overflow: hidden;
 	display: block;
 	width: 810px;
-	height: 815px;
+	height: 700px;
 	z-index: 0;
 }
 .cloud1, .cloud2, .cloud3 {
@@ -95,30 +122,32 @@ div.cloudLayer {
 
 .introText {
 	display: block;
-	width: 600px;
+	width: 700px;
 	height: 160px;
 	position: absolute;
 	z-index: 15;
-	top: 40px;
+	top: 20px;
 	left: 50%;
-	margin-left: -300px;
+	margin-left: -350px;
 	font-family: Oxydesign;
 	font-weight: bold;
-	font-size: 22px;
+	font-size: 18px;
 	color: #FFF;
 	text-align: center;
 	text-shadow: 1px 3px 3px #333;
 }
 
 .introContent .leftBox {
-	padding-left: 60px;
-	height: 144px;
+	padding-left: 45px;
+	height: 110px;
 	background: url(../images/quote.png) no-repeat 0px 0px;}
 .introContent .rightBox {
-	padding-right: 60px;
-	height: 144px;
-	background: url(../images/quote.png) no-repeat 100% -144px;
-	padding-top: 15px;}
+	padding-right: 45px;
+	height: 110px;
+	background: url(../images/quote.png) no-repeat 100% -110px;}
+.introContent .rightBox  span {
+	padding-top: 15px;
+	display: block;}
 	
 .introText .introContent {
 	position: relative;
@@ -181,11 +210,11 @@ div.cloudLayer {
 #popupInfo {
 	display: block;
 	width: 810px;
-	height: 815px;
+	height: 700px;
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: 100;
+	z-index: 1001;
 	background: rgba(0, 0, 0, 0.7);
 }
 
@@ -194,7 +223,7 @@ div.cloudLayer {
 	width: 673px;
 	height: 170px;
 	position: relative;
-	margin: 322px auto;
+	margin: 200px auto;
 }
 #popupInfo .popupBox_bgn .popupLogo {
 	display: block;
@@ -246,7 +275,7 @@ div.cloudLayer {
 	width: 680px;
 	height: 500px;
 	position: absolute;
-	top: 130px;
+	top: 90px;
 	left: 50%;
 	margin-left: -340px;
 	z-index: 10;
@@ -254,10 +283,10 @@ div.cloudLayer {
 
 .logoKFC {
 	display: block;
-	width: 95px;
-	height: 97px;
+	width: 85px;
+	height: 87px;
 	position: absolute;
-	background: url(../images/kfc_logo.png) no-repeat center center;
+	background: none;
 	}
 .boardInfo .logoKFC {
 	top: -48px;
@@ -274,9 +303,12 @@ div.cloudLayer {
 	width: 600px;
 	margin: 20px auto;
 	height: 240px;
-	overflow: scroll;}
+	overflow: scroll;
+	overflow-x :hidden;}
 .fullDesc .readAll {
-	padding-right: 20px;}
+	padding-right: 20px;
+	overflow-x :hidden;
+	overflow-y: hidden;}
 .boardInfo .introCont h4 {
 	color: #FC0;
 	text-transform: uppercase;
@@ -307,7 +339,7 @@ div.cloudLayer {
 	margin-left: 20px;}
 	
 .bigBox_Menu {
-	bottom: 153px !important;
+	bottom: 80px !important;
 	z-index: 101;}
 .burgerSymbol {
 	width: 162px;
@@ -324,7 +356,7 @@ div.cloudLayer {
 	
 /*---- MAIN GAME LAYOUT ----*/
 .playPage .facebookLogo {
-	top: 15px;
+	top: 7px;
 	right: 20px;
 	z-index: 1000;}
 .playPage .playElement {
@@ -334,13 +366,13 @@ div.cloudLayer {
 	width: 318px;
 	height: 172px;
 	background: url(../images/playElement.png) no-repeat center center;
-	bottom: 10px;
+	bottom: 0px;
 	left: 7px;
 }
 .layoutGame {
 	position: absolute;
 	width: 810px;
-	height: 815px;
+	height: 700px;
 	z-index: 100;
 	display: block;
 	top: 0px;
@@ -349,7 +381,7 @@ div.cloudLayer {
 div.cityLayer {
 	background: url(../images/city.png) no-repeat bottom center;
 	width: 810px;
-	height: 815px;
+	height: 700px;
 	position: absolute;
 	z-index: 10;
 	display: block;
@@ -361,7 +393,7 @@ div.cityLayer {
 	position: absolute;
 	z-index:20;
 	width: 173px;
-	height: 815px;
+	height: 700px;
 	background: url(../images/playScene.png) no-repeat top left;
 }
 
@@ -371,7 +403,7 @@ div.cityLayer {
 
 .layoutGame .colRight {
 	width: 637px;
-	height: 815px;
+	height: 700px;
 	position:absolute;
 	right: 0px;
 	background: url(../images/playScene.png) no-repeat top right;}
@@ -382,13 +414,13 @@ div.cityLayer {
 	height: 55px;
 	text-align: center;
 	margin: 0px auto;
-	margin-top: 160px;}
+	margin-top: 135px;}
 .layoutGame .totalScore {
-	margin-top: 50px;
+	margin-top: 30px;
 	width: 150px;
 	}
 .layoutGame .memberInfo {
-	margin-top: 20px;
+	margin-top: 0px;
 	}
 .layoutGame .memberInfo img.thumbImg {
 	box-shadow: 0px 0px 1px #900, 0px 0px 5px #FFF;
@@ -407,8 +439,8 @@ div.cityLayer {
 	font-weight: bold;}
 	
 .layoutGame .burgerKind {
-	margin-top: 50px;
-	height: 145px;
+	margin-top: 30px;
+	height: 130px;
 	width: 120px;}
 .layoutGame .burgerKind li {
 	font-family: Oxydesign;
@@ -441,7 +473,7 @@ div.cityLayer {
 	position: absolute;
 	width: 500px;
 	height: 45px;
-	top: 35px;
+	top: 18px;
 }
 .layoutGame .lifeNum  li {
 	background: #FFF;
@@ -484,7 +516,9 @@ div.cityLayer {
 	background: url(../images/popup_top6.png) no-repeat center center;
 	}
 .fullSix {
-	height: 350px;}
+	height: 350px;
+	overflow: hidden;
+	white-space: nowrap;}
 .tableInfo {
 	border: 0px;
 	margin: 50px auto 0px;
@@ -510,14 +544,15 @@ div.cityLayer {
 	text-align: center;}
 .tableInfo tbody td {
 	padding: 15px 0px;
-	font-weight: bold;}
+	font-weight: bold;
+	white-space: nowrap;}
 	
 /*----- POPUP REGIST & GAMEOVER ----*/
 #messPopup {
 	background: rgba(0 , 0, 0, 0.7);
 	display: block;
 	width: 810px;
-	height: 815px;
+	height: 700px;
 	display: block;
 	position: absolute;
 	top: 0px;

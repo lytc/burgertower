@@ -4,8 +4,8 @@ $( function() {
 
     $('.homePage').bgscroll({scrollSpeed:10, direction:'h' });
     $('.cityLayer').animate({opacity: 1}, 1200, function(){
-        $('.potatoLayer').animate({opacity: 1, top: 394, left: 0}, 600, function(){
-            $('.burgerLayer').animate({bottom: 100, opacity: 1}, 1500, "easeOutBounce", function(){
+        $('.potatoLayer').animate({opacity: 1, top: 294, left: 0}, 600, function(){
+            $('.burgerLayer').animate({bottom: 85, opacity: 1}, 1500, "easeOutBounce", function(){
                 $('.chiliLayer').animate({opacity: 1, left: 25}, 500, "", function(){
                     $('#mainNav').animate({opacity: 1, bottom: 30}, 400);
                 });

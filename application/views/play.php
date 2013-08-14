@@ -20,7 +20,11 @@
     <div class="playElement"></div>
     <div class="layoutGame">
         <div class="colLeft">
-            <div class="logoKFC"></div>
+            <div class="logoKFC">
+            	<a href="#">
+                	<img src="/assets/images/kfc_logo.png" width="85" height="87"/>
+                </a>
+            </div>
             <div class="timming">
                 <div class="numOutline">00:00:00</div>
             </div>
@@ -71,7 +75,11 @@
                 </div>
             </div>
         </div>
-        <div class="logoKFC"></div>
+        <div class="logoKFC">
+        	<a href="#">
+                <img src="/assets/images/kfc_logo.png" />
+            </a>
+        </div>
         <div class="burgerSymbol"></div>
         <div id="mainNav" class="popupMenu">
             <ul class="mainNav">

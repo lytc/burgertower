@@ -8,7 +8,11 @@
             <img src="/assets/images/cloud03.png" class="cloud3" />
         </div>
         <div class="boardInfo">
-            <div class="logoKFC"></div>
+            <div class="logoKFC">
+            	<a href="#">
+                    <img src="/assets/images/kfc_logo.png" />
+                </a>
+            </div>
             <div class="content">
                 <div class="introCont">
                     <h4>Tên chương trình: - Tòa tháp Burger</h4>
