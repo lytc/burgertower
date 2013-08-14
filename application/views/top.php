@@ -42,7 +42,7 @@
             <ul class="mainNav">
                 <li class="setRule"><a href="/the-le">Thể lệ</a></li>
                 <li class="start"><a href="/play">Bắt đầu</a></li>
-                <li class="topSix"><a href="/top">Top 6</a></li>
+                <li class="topSix current"><a href="/top">Top 6</a></li>
             </ul>
         </div>
     </div>

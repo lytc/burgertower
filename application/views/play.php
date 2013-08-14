@@ -75,7 +75,7 @@
         <div class="burgerSymbol"></div>
         <div id="mainNav" class="popupMenu">
             <ul class="mainNav">
-                <li class="setRule"><a href="/the-le">Thể lệ</a></li>
+                <li class="setRule current"><a href="/the-le">Thể lệ</a></li>
                 <li class="start"><a href="/play">Chơi lại</a></li>
                 <li class="topSix"><a href="/top">Top 6</a></li>
             </ul>
