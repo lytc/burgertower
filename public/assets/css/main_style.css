@@ -510,6 +510,26 @@ div.cityLayer {
 	font-size: 60px;
 	color: #900;
 	text-shadow: 0 0 15px #F90, 0px 0px 30px #FC0;}
+
+.soundControl {
+	width: 36px;
+	height: 36px;
+	display: block;
+	position: absolute;
+	z-index: 100;
+	top: 60px;
+	right: 5px;}
+.soundControl button {
+	display: block;
+	width: 36px;
+	height: 36px;
+	border: none;
+	text-indent: -9999px;
+	background: url(../images/sound.png) bottom left no-repeat;
+}
+
+.soundControl button.playing {
+	background: url(../images/sound.png) top left no-repeat;}
 	
 /*----- Page TopSix ------*/
 .topSix_bgn {

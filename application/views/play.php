@@ -57,6 +57,19 @@
             </div>
             <div id="playStage" class="playStage">
             </div>
+            
+            <!---- Audio Embedded --->
+            <div id="sound" class="soundControl stop">
+            	<button class="soundBtn">Play</button>
+            </div>
+            <audio id="mainSound" loop="loop" autoplay>
+                <source src="/assets/music/looper.mp3" type="audio/mpeg"/>
+                <source src="/assets/music/looper.ogg" type="audio/ogg"/>
+                <source src="/assets/music/looper.wav" type="audio/wav"/>
+                <source src="/assets/music/looper.webm" type="audio/webm"/>
+                <a href="#">Your browser is not support audio!</a>
+            </audio>
+           	<!--- End --->
         </div>
     </div>
 
