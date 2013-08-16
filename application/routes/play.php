@@ -60,6 +60,8 @@ $this->post('/end', function() {
     $userId = $this->session('user')['id'];
     $user = User::first($userId);
 
+    $newHighScore = false;
+
     if ($valid) {
         $connection = Score::getConnection();
         $connection->beginTransaction();
@@ -75,6 +77,7 @@ $this->post('/end', function() {
                 $user->score = $gameData['score'];
                 $user->playTime = $playTime;
                 $user->save();
+                $newHighScore = $gameData['score'];
             }
 
             $connection->commit();
@@ -90,5 +93,5 @@ $this->post('/end', function() {
 
     $this->session('gameData', null);
 
-    return ['time' => $playTime];
+    return ['time' => $playTime, 'registered' => !!$user->email, 'score' => $gameData['score']];
 });

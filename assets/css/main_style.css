@@ -1,0 +1,729 @@
+@charset "UTF-8";
+/* CSS Document */
+@import url("reset.css");
+
+
+@font-face {
+	font-family: 'UTM_Cookies';
+	src: url(../fonts/UTM_Cookies.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'CHERI';
+	src: url(../fonts/CHERI.TTF) format('truetype');
+}
+@font-face {
+	font-family: 'Oxydesign';
+	src: url(../fonts/Oxydesign_LG.ttf) format('truetype');
+	font-weight: normal;
+}
+@font-face {
+	font-family: 'Oxydesign';
+	src: url(../fonts/Oxydesign_LGBold.ttf) format('truetype');
+	font-weight: bold;
+}
+
+@-moz-document url-prefix(http://),url-prefix(https://) {
+	scrollbar {
+	   -moz-appearance: none !important;
+	   background: rgb(0,255,0) !important;
+	}
+	thumb,scrollbarbutton {
+	   -moz-appearance: none !important;
+	   background-color: rgb(0,0,255) !important;
+	}
+	
+	thumb:hover,scrollbarbutton:hover {
+	   -moz-appearance: none !important;
+	   background-color: rgb(255,0,0) !important;
+	}
+	
+	scrollbarbutton {
+	   display: none !important;
+	}
+	
+	scrollbar[orient="vertical"] {
+	  min-width: 5px !important;
+	}
+}
+
+
+h1, h2, h3, h4 {
+	font-family: UTM_Cookies;}
+.clear {
+	clear: both;}
+
+.mainScene {
+	width: 810px;
+	height: 700px;
+	display: block;
+	margin: 0px auto;
+	position: relative;
+	border: none;
+	overflow: hidden;
+}
+
+.homePage, .playPage {
+	background: url(../images/home_bgn.jpg) repeat-x 0 bottom;}
+.thelePage {
+	background: url(../images/yellow_bgn.jpg) repeat-x 0px top;}
+
+/* HOME LAYOUR */
+img.cityLayer {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	z-index: 0;
+}
+img.burgerLayer {
+	z-index: 1;
+	bottom: 1100px;
+	left: 50%;
+	margin-left: -290px;
+	position: absolute;}
+
+img.chiliLayer {
+	position: absolute;
+	z-index: 2;
+	top: 485px;
+	left: 70px;
+}
+
+img.potatoLayer {
+	position: absolute;
+	top: 394px;
+	left: -50px;
+}
+
+.facebookLogo {
+	width: 274px;
+	height: 59px;
+	position: absolute;
+	top: 110px;
+	right: 20px;
+	z-index: 1000;}
+
+.facebookLogo .faceIcon {
+	cursor: pointer;
+	position: absolute;
+	}
+	
+div.cloudLayer {
+	overflow: hidden;
+	display: block;
+	width: 810px;
+	height: 700px;
+	z-index: 0;
+}
+.cloud1, .cloud2, .cloud3 {
+	position:absolute;
+	overflow: hidden;
+}
+
+.introText {
+	display: block;
+	width: 700px;
+	height: 160px;
+	position: absolute;
+	z-index: 15;
+	top: 20px;
+	left: 50%;
+	margin-left: -350px;
+	font-family: Oxydesign;
+	font-weight: bold;
+	font-size: 18px;
+	color: #FFF;
+	text-align: center;
+	text-shadow: 1px 3px 3px #333;
+}
+
+.introContent .leftBox {
+	padding-left: 45px;
+	height: 110px;
+	background: url(../images/quote.png) no-repeat 0px 0px;}
+.introContent .rightBox {
+	padding-right: 45px;
+	height: 110px;
+	background: url(../images/quote.png) no-repeat 100% -110px;}
+.introContent .rightBox  span {
+	padding-top: 15px;
+	display: block;}
+	
+.introText .introContent {
+	position: relative;
+	overflow: hidden;
+	width: 120px;
+	margin: 0px auto;
+	display: block;
+}
+
+/* MAIN NAVIGATION */
+#mainNav {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	margin-left: -215px;
+	z-index: 10;
+}
+
+#mainNav ul.mainNav {
+	display: block;
+	width:430px;
+	height: 60px;
+	padding-top: 8px;
+	background: url(../images/menu_bgn.png) no-repeat;}
+
+#mainNav ul.mainNav li {
+	font-size: 22px;
+	line-height: 26px;
+	font-family: UTM_Cookies;
+	text-transform: uppercase;
+	display: block;
+	width: 143px;
+	text-align: center;
+	position: relative;
+	float: left;
+	color: #96440a;
+	margin-top: 0px;
+	text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75);
+	cursor: pointer;
+}
+
+#mainNav ul.mainNav li a {
+    color: #96440a;
+    text-decoration: none;
+}
+
+#mainNav li.setRule {
+	transform: rotate(8deg);
+	-moz-transform: rotate(8deg);
+	-webkit-transform: rotate(8deg);}
+
+#mainNav li.start {
+	margin-top: 7px !important;
+	}
+	
+#mainNav li.current a {
+	color: #C00 !important;}
+
+#mainNav li.topSix {
+	transform: rotate(-8deg);
+	-moz-transform: rotate(-8deg);
+	-webkit-transform: rotate(-8deg);}
+
+/* POPUP BOX STYLE */
+#popupInfo {
+	display: block;
+	width: 810px;
+	height: 700px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1001;
+	background: rgba(0, 0, 0, 0.7);
+}
+
+#popupInfo .popupBox_bgn {
+	background: url(../images/pop-up-box.png) no-repeat center center;
+	width: 673px;
+	height: 170px;
+	position: relative;
+	margin: 200px auto;
+}
+#popupInfo .popupBox_bgn .popupLogo {
+	display: block;
+	width: 95px;
+	height: 97px;
+	position: absolute;
+	top: -48px;
+	background: url(../images/kfc_logo.png) no-repeat center center;
+	left: 289px;
+}
+#popupInfo .popupBox_bgn .popupMes {
+	margin-left: 130px;
+	margin-right: 130px;
+	padding-top: 60px;
+	text-align: center;
+	color: #c41230;
+	font-family: UTM_Cookies;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+#popupInfo .popupBox_bgn .popupMes span {
+	font-size: 26px;}
+	
+/* OTHER PAGE - THE LE */
+.glowBox {
+	/* fallback */
+	background-image: url(../images/gradient.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	
+	/* Safari 4-5, Chrome 1-9 */
+	/* Can't specify a percentage size? Laaaaaame. */
+	background: -webkit-gradient(radial, center center, 0, center center, 600, from(rgba(75,48,8,0)), to(rgba(75,48,8, 0.3)));
+	
+	/* Safari 5.1+, Chrome 10+ */
+	background: -webkit-radial-gradient(circle, rgba(75,48,8,0), rgba(75,48,8, 0.3));
+	
+	/* Firefox 3.6+ */
+	background: -moz-radial-gradient(circle, rgba(75,48,8,0), rgba(75,48,8, 0.3));
+	
+	/* IE 10 */
+	background: -ms-radial-gradient(circle, rgba(75,48,8,0), rgba(75,48,8, 0.3));
+ }
+ 
+.boardInfo {
+	background: url(../images/popup_thele.png) no-repeat center center;
+	display: block;
+	width: 680px;
+	height: 500px;
+	position: absolute;
+	top: 90px;
+	left: 50%;
+	margin-left: -340px;
+	z-index: 10;
+}
+
+.logoKFC {
+	display: block;
+	width: 85px;
+	height: 87px;
+	position: absolute;
+	background: none;
+	}
+.boardInfo .logoKFC {
+	top: -48px;
+	left: 289px;
+	}
+.boardInfo .introCont {
+	display: block;
+	width: 550px;
+	text-align: center;
+	margin: 0px auto;
+	margin-top: 55px;
+	}
+.fullDesc {
+	width: 600px;
+	margin: 20px auto;
+	height: 240px;
+	overflow: scroll;
+	overflow-x :hidden;}
+.fullDesc .readAll {
+	padding-right: 20px;
+	overflow-x :hidden;
+	overflow-y: hidden;}
+.boardInfo .introCont h4 {
+	color: #FC0;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+	}
+.boardInfo .introCont p {
+	font-family: Oxydesign;
+	font-size: 15px;
+	font-weight: bold;
+	color: #333;
+	}
+.theleCont h4 {
+	color: #C00;
+	font-size: 14px;
+	margin-top: 10px;}
+.theleCont p, .theleCont li {
+	font-family: Oxydesign;
+	font-weight: normal;
+	color: #333;
+	font-size: 16px;
+}
+
+.theleCont p strong, .theleCont li strong {
+	font-weight: bold;}
+
+.theleCont ul {
+	list-style: disc;
+	margin-left: 20px;}
+	
+.bigBox_Menu {
+	bottom: 80px !important;
+	z-index: 101;}
+.burgerSymbol {
+	width: 162px;
+	height: 167px;
+	position: absolute;
+	bottom:-100px;
+	left: -55px;
+	background: url(../images/burger_small.png) no-repeat;
+}
+
+.facebookLogo.otherPos {
+	top: 20px;
+	right: 20px;}
+	
+/*---- MAIN GAME LAYOUT ----*/
+.playPage .facebookLogo {
+	top: 7px;
+	right: 20px;
+	z-index: 1000;}
+.playPage .playElement {
+	display: block;
+	position: absolute;
+	z-index: 1000;
+	width: 318px;
+	height: 172px;
+	background: url(../images/playElement.png) no-repeat center center;
+	bottom: 0px;
+	left: 7px;
+}
+.layoutGame {
+	position: absolute;
+	width: 810px;
+	height: 700px;
+	z-index: 100;
+	display: block;
+	top: 0px;
+	left: 0px;
+}
+div.cityLayer {
+	background: url(../images/city.png) no-repeat bottom center;
+	width: 810px;
+	height: 700px;
+	position: absolute;
+	z-index: 10;
+	display: block;
+	top: 0px;
+	left: 0px;
+}
+.layoutGame .colLeft {
+	display: block;
+	position: absolute;
+	z-index:20;
+	width: 173px;
+	height: 700px;
+	background: url(../images/playScene.png) no-repeat top left;
+}
+
+.layoutGame .colLeft .logoKFC {
+	left: 40px;
+	top: 15px;}
+
+.layoutGame .colRight {
+	width: 637px;
+	height: 700px;
+	position:absolute;
+	right: 0px;
+	background: url(../images/playScene.png) no-repeat top right;}
+	
+.layoutGame .timming, .layoutGame .totalScore, .layoutGame .burgerKind, .layoutGame .memberInfo {
+	display: block;
+	width: 140px;
+	height: 55px;
+	text-align: center;
+	margin: 0px auto;
+	margin-top: 135px;}
+.layoutGame .totalScore {
+	margin-top: 30px;
+	width: 150px;
+	}
+.layoutGame .memberInfo {
+	margin-top: 0px;
+	}
+.layoutGame .memberInfo img.thumbImg {
+	box-shadow: 0px 0px 1px #900, 0px 0px 5px #FFF;
+	border: solid 5px #FFF;
+	border-radius: 4px;
+	width: 48px;
+	height: 48px;}
+.layoutGame .memberInfo .accName {
+	font-family: Oxydesign;
+	font-size: 14px;
+	font-weight: normal;
+	padding-top: 10px;}
+.layoutGame .memberInfo .accName span {
+	display: block;}
+.layoutGame .memberInfo .accName span.name {
+	font-weight: bold;}
+	
+.layoutGame .burgerKind {
+	margin-top: 30px;
+	height: 130px;
+	width: 120px;}
+.layoutGame .burgerKind li {
+	font-family: Oxydesign;
+	font-weight: bold;
+	color: #900;
+	line-height: 28px;
+	font-size: 16px;
+	text-shadow: 0px 0px 3px #FFF;
+	}
+
+.layoutGame .burgerKind li span {
+	display: block;
+	width: 40px;
+	height: 24px;
+	background: url(../images/burger01.png) no-repeat center center;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top:2px;}
+.layoutGame .numOutline {
+	font-family: Oxydesign;
+	font-weight: bold;
+	font-size: 26px;
+	line-height: 50px;
+	color: #FFF;
+	text-shadow: 0px 0px 2px #660000, 0px 0px 10px rgba(255,255,0,0.9);}
+	
+.layoutGame .lifeNum {
+	display: block;
+	position: absolute;
+	width: 500px;
+	height: 45px;
+	top: 18px;
+}
+.layoutGame .lifeNum  li {
+	background: #FFF;
+	border-radius: 10px;
+	display: block;
+	background: #FFF url(../images/life.png) no-repeat center center;
+	width: 45px;
+	height: 45px;
+	box-shadow: -3px 3px 0px rgba(0, 0, 0, .7);
+	float: left;
+	margin-right: 5px;}
+.layoutGame .lifeNum  li span.loose {
+	display: block;
+	width: 45px;
+	height: 45px;
+	background: url(../images/loose.png) no-repeat center center;}
+	
+.layoutGame .playStage {
+	width: 588px;
+	height: 570px;
+	position:absolute;
+	z-index: 1000;
+	display: block;
+	top: 85px;
+	left: 15px;
+	overflow: hidden;}
+	
+.layoutGame .playStage .score {
+	font-family: Oxydesign;
+	position: absolute;
+	top: 200px;
+	left: 150px;
+	font-weight: bold;
+	font-size: 60px;
+	color: #900;
+	text-shadow: 0 0 15px #F90, 0px 0px 30px #FC0;}
+
+.soundControl {
+	width: 36px;
+	height: 36px;
+	display: block;
+	position: absolute;
+	z-index: 100;
+	top: 60px;
+	right: 5px;}
+.soundControl button {
+	display: block;
+	width: 36px;
+	height: 36px;
+	border: none;
+	text-indent: -9999px;
+	background: url(../images/sound.png) bottom left no-repeat;
+}
+
+.soundControl button.playing {
+	background: url(../images/sound.png) top left no-repeat;}
+	
+/*----- Page TopSix ------*/
+.topSix_bgn {
+	background: url(../images/popup_top6.png) no-repeat center center;
+	}
+.fullSix {
+	height: 350px;
+	overflow: hidden;
+	white-space: nowrap;}
+.tableInfo {
+	border: 0px;
+	margin: 50px auto 0px;
+	padding: 0px;
+	width: 90%;}
+	
+.tableInfo thead {
+	font-family: UTM_Cookies;
+	font-size: 22px;
+	text-transform: uppercase;
+	color: #C00;
+	text-shadow: 0px 0px 3px #666;}
+.tableInfo .colName, .tableInfo .colScore, .tableInfo .colTime {
+	width: 35%;
+	padding: 0px;
+}
+.tableInfo .colScore {
+	width: 30%;}
+.tableInfo tbody {
+	font-family: Oxydesign;
+	font-size: 18px;
+	color: #333;
+	text-align: center;}
+.tableInfo tbody td {
+	padding: 15px 0px;
+	font-weight: bold;
+	white-space: nowrap;}
+	
+/*----- POPUP REGIST & GAMEOVER ----*/
+#messPopup, .messPopup {
+	background: rgba(0 , 0, 0, 0.7);
+	display: block;
+	width: 810px;
+	height: 700px;
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1000;
+}
+
+#messPopup .popupBox, .messPopup .popupBox {
+	width: 627px;
+	height: 448px;
+	position: absolute;
+	left: 50%;
+	top: 125px;
+	margin-left: -314px;
+	background: url(../images/game-over-bgn.png) no-repeat center center;}
+#messPopup .logoKFC, .messPopup .logoKFC {
+	position: absolute;
+	top: 80px;
+	left: 50%;
+	margin-left: -47px;
+	}
+	
+#messPopup .burgerSymbol, .messPopup .burgerSymbol {
+	position: absolute;
+	left: 40px;
+	top: 440px}
+#messPopup .popupMenu, .messPopup .popupMenu {
+	top: 530px;}
+	
+.gameOver {
+	text-align: center;
+	position: relative;
+	margin-top: 60px;
+	font-family: UTM_Cookies;
+	color: #C00;}
+.gameOver h3 {
+	font-family: Oxydesign;
+	font-size: 22px;
+	font-weight: bold;
+	color: #C00;
+	margin-top: 10px;
+	text-transform: uppercase;
+	text-shadow:
+		0px 0px 3px #FFF;
+	}
+.gameOver .numScore {
+	font-size: 72px;
+	text-transform: uppercase;
+	height: 80px;
+	line-height: 70px;
+	-webkit-text-fill-color: #C00; /* Will override color (regardless of order) */
+   -webkit-text-stroke-width: 3px;
+   -webkit-text-stroke-color: #FFF;
+   text-shadow: 0px 0px 7px rgba(0,0,0, 0.8);
+}
+
+.gameOver .timer, .gameOver .numBurger {
+	font-size: 18px;
+	line-height: 24px;}
+.gameOver .saveBtn {
+	margin: 0px auto;
+	padding-top: 15px;
+}
+
+.gameOver .saveBtn button, button.registSend {
+	width: 119px;
+	height: 40px;
+	display: block;
+	margin: 0px auto;
+	background: url(../images/saveBtn.png) no-repeat top left;
+	border: 0px;
+	font-family: UTM_Cookies;
+	color: #063;
+	font-size: 16px;
+	line-height: 10px;
+}
+.gameOver .saveBtn button:hover, button.registSend:hover {
+	background: url(../images/saveBtn.png) no-repeat bottom left;
+	color: #096;
+}
+
+
+/*----- REGISTRATION INFO ----*/
+.registCont {
+	
+	font-family: UTM_Cookies;
+	font-size: 14px;
+	margin-top: 60px;}
+.registCont h3 {
+	font-family: Oxydesign;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 35px;
+	color: #C00;}
+
+.registCont label {
+	float: left;
+	width: 150px;
+	margin-left: 50px;
+	font-size: 16px;
+	color: #C00;
+	text-align: right;
+	line-height: 35px;
+	font-family: UTM_Cookies;}
+.registCont input {
+	float: left;
+	margin-left: 10px;
+	width: 300px;
+	height: 30px;
+	color: #333;
+	padding-left: 5px;
+	line-height: 24px;
+	font-size: 14px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	border: 1px solid #0CC;
+	box-shadow: inset 0px 0px 5px rgba(0,0,0,0.7);
+	-moz-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.7);
+   	-webkit-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.7);
+}
+
+.registCont input:focus {
+	box-shadow: inset 0px 0px 8px rgba(0,0,0,0.5);
+	-moz-box-shadow: inset 0px 0px 8px rgba(0,0,0,0.5);
+   	-webkit-box-shadow: inset 0px 0px 8px rgba(0,0,0,0.5);
+	}
+.registCont button.registSend {
+	margin-top: 10px;
+	color: #C00;
+	text-transform: uppercase;
+	}
+.registCont button.registSend:hover {
+	color: #C60;}
+
+.closeBtn {
+	width:41px;
+	height: 44px;
+	position: absolute;
+	background: url(../images/popup_close.png) no-repeat top left;
+	top: -10px;
+	right: 40px;
+}
+
+div.closeBtn:hover {
+	background-position: bottom left;}
+
+

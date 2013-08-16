@@ -1,14 +1,14 @@
 <div id="HomeScene" class="mainScene thelePage">
     <div class="layoutD glowBox">
         <div class="cloudLayer">
-            <img src="/assets/images/cloud01.png" class="cloud1" />
-            <img src="/assets/images/cloud02_1.png" class="cloud2" />
-            <img src="/assets/images/cloud03.png" class="cloud3" />
+            <img src="<?= BASE_URL ?>/assets/images/cloud01.png" class="cloud1" />
+            <img src="<?= BASE_URL ?>/assets/images/cloud02_1.png" class="cloud2" />
+            <img src="<?= BASE_URL ?>/assets/images/cloud03.png" class="cloud3" />
         </div>
         <div class="boardInfo topSix_bgn">
             <div class="logoKFC">
-            	<a href="#">
-                    <img src="/assets/images/kfc_logo.png" />
+            	<a href="<?= BASE_URL ?>/">
+                    <img src="<?= BASE_URL ?>/assets/images/kfc_logo.png" />
                 </a>
             </div>
             <div class="content">
@@ -28,7 +28,7 @@
                         <tr>
                             <td><?= $this->escape($user->name) ?></td>
                             <td><?= $user->score ?></td>
-                            <td><?= sprintf(gmdate('H %\s i %\s s %\s', $user->play_time), 'giờ', 'phút', 'giây') ?></td>
+                            <td><?= sprintf(gmdate('i %\s s %\s', $user->play_time), 'phút', 'giây') ?></td>
                         </tr>
                         <? endforeach ?>
                         </tbody>
@@ -40,7 +40,7 @@
             <div class="burgerSymbol"></div>
         </div>
         <div class="facebookLogo otherPos">
-            <img src="/assets/images/face_icon.png" class="faceIcon" />
+            <img src="<?= BASE_URL ?>/assets/images/face_icon.png" class="faceIcon" />
         </div>
         <div id="mainNav" class="bigBox_Menu">
             <ul class="mainNav">

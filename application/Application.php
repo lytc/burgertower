@@ -23,13 +23,13 @@ class Application extends \Lazy\Application\Application
             }
 
             $this->view()->variables('pageId', $this->session('pageId'));
-
-            if ($request->isPost() && $request->param('signed_request')) {
-                if (!isset($signedRequest['page']['liked']) || !$signedRequest['page']['liked']) {
-                    $this->redirect('like-to-play');
-                } else {
-                    $this->redirect('index');
-                }
+            if ($request->isPost() && $request->param('signed_request') && $request->pathInfo() != '/') {
+                $this->redirect('index');
+//                if (!isset($signedRequest['page']['liked']) || !$signedRequest['page']['liked']) {
+//                    $this->redirect('index');
+//                } else {
+//                    $this->redirect('index');
+//                }
             }
 
             $this->view()->variables('facebook', $facebook);

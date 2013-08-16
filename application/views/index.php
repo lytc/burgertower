@@ -1,19 +1,19 @@
-<? $this->capture('javascripts', $this->javascriptTag('/assets/js/index')) ?>
+<? $this->capture('javascripts', $this->javascriptTag(BASE_URL . '/assets/js/index')) ?>
 
 <div id="HomeScene" class="mainScene homePage">
     <div class="layoutD">
-        <img src="/assets/images/city.png" class="cityLayer"/>
-        <img src="/assets/images/potato.png" width="160" height="354" class="potatoLayer"/>
-        <img src="/assets/images/burger_logo.png" width="544" height="500" class="burgerLayer"/>
-        <img src="/assets/images/chili.png" class="chiliLayer"/>
+        <img src="<?= BASE_URL ?>/assets/images/city.png" class="cityLayer"/>
+        <img src="<?= BASE_URL ?>/assets/images/potato.png" width="160" height="354" class="potatoLayer"/>
+        <img src="<?= BASE_URL ?>/assets/images/burger_logo.png" width="544" height="500" class="burgerLayer"/>
+        <img src="<?= BASE_URL ?>/assets/images/chili.png" class="chiliLayer"/>
         <div class="cloudLayer">
-            <img src="/assets/images/cloud01.png" class="cloud1" />
-            <img src="/assets/images/cloud02.png" class="cloud2" />
-            <img src="/assets/images/cloud03.png" class="cloud3" />
+            <img src="<?= BASE_URL ?>/assets/images/cloud01.png" class="cloud1" />
+            <img src="<?= BASE_URL ?>/assets/images/cloud02.png" class="cloud2" />
+            <img src="<?= BASE_URL ?>/assets/images/cloud03.png" class="cloud3" />
         </div>
         <div class="facebookLogo">
         	<a href="#" >
-            <img src="/assets/images/face_icon.png" class="faceIcon share-fb" />
+            <img src="<?= BASE_URL ?>/assets/images/face_icon.png" class="faceIcon share-fb" />
             </a>
         </div>
         <div class="introText">
@@ -31,10 +31,12 @@
             </ul>
         </div>
     </div>
-    <div id="popupInfo">
+    <? if (isset($liked) && !$liked): ?>
+    <div id="popupInfo" style="display: block; opacity: 1;">
         <div class="popupBox_bgn">
             <div class="popupLogo"></div>
-            <div class="popupMes">chúc mừng bạn đã tham gia <br/><span>“Burger tower” thành công</span></div>
+            <div class="popupMes">Hãy like fanpage KFC để có thể chơi game này!</span></div>
         </div>
     </div>
+    <? endif ?>
 </div>

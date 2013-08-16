@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* ANIMATE CLOUD */
+.cloud1, .cloud2, .cloud3 {
+	-moz-animation-name: moving;
+	-webkit-animation-name: moving;
+	-moz-animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-timing-function: linear;
+	-webkit-animation-timing-function: linear;
+}
+.cloud1 {
+	top: 250px;
+	-moz-animation-duration: 18s;
+	-webkit-animation-duration: 18s;
+	
+}
+.cloud2 {
+	top: 100px;
+	-moz-animation-duration: 30s;
+	-webkit-animation-duration: 30s;
+}
+.cloud3 {
+	top: 40px;
+	-moz-animation-duration: 20s;
+	-webkit-animation-duration: 20s;
+}
+
+    
+@-moz-keyframes moving {
+  from {left: -150px;}
+  to {left: 900px;}
+}
+
+@-webkit-keyframes moving {
+  from {left: -150px;}
+  to {left: 900px;}
+}
+
+.faceIcon {
+	-webkit-animation: faceAni 1s linear 0s infinite alternate;
+     -moz-animation: faceAni 1s linear 0s infinite alternate;
+       -o-animation: faceAni 1s linear 0s infinite alternate;
+          animation: faceAni 1s linear 0s infinite alternate;
+	}
+@-webkit-keyframes faceAni { from { top: 0px; } to { top: 15px; }  }
+   @-moz-keyframes faceAni { from { top: 0px; } to { top: 15px; }  }
+     @-o-keyframes faceAni { from { top: 0px; } to { top: 15px; }  }
+        @keyframes faceAni { from { top: 0px; } to { top: 15px; }  }
+
+
+#mainNav ul.mainNav li:hover {
+	-webkit-animation: menuAni 0.5s ease-in-out 0s infinite alternate;
+     -moz-animation: menuAni 0.5s ease-in-out 0s infinite alternate;
+       -o-animation: menuAni 0.5s ease-in-out 0s infinite alternate;
+          animation: menuAni 0.5s ease-in-out 0s infinite alternate;
+	}
+@-webkit-keyframes menuAni { from { opacity: 1; text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75); } to { opacity: 0.7; text-shadow: 1px 3px 10px rgba(255, 198, 0, 0.75); }  }
+   @-moz-keyframes menuAni { from { opacity: 1; text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75); } to { opacity: 0.7; text-shadow: 1px 3px 10px rgba(255, 198, 0, 0.75); }   }
+     @-o-keyframes menuAni { from { opacity: 1; text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75); } to { opacity: 0.7; text-shadow: 1px 3px 10px rgba(255, 198, 0, 0.75); }   }
+        @keyframes menuAni { from { opacity: 1; text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.75); } to { opacity: 0.7; text-shadow: 1px 3px 10px rgba(255, 198, 0, 0.75); } }
+
+
+#popupInfo .popupBox_bgn .popupLogo, .boardInfo .logoKFC {
+	-webkit-animation: logoPopup 0.5s ease-in-out 0s infinite alternate;
+     -moz-animation: logoPopup 0.5s ease-in-out 0s infinite alternate;
+       -o-animation: logoPopup 0.5s ease-in-out 0s infinite alternate;
+          animation: logoPopup 0.5s ease-in-out 0s infinite alternate;
+	}
+@-webkit-keyframes logoPopup { from { top: -48px; } to { top: -60px; } }
+   @-moz-keyframes logoPopup { from { top: -48px; } to { top: -60px; } }
+     @-o-keyframes logoPopup { from { top: -48px; } to { top: -60px; } }
+        @keyframes logoPopup { from { top: -48px; } to { top: -60px; } }
+		
+
+button:hover {
+	-webkit-animation: menuAni 0.5s ease-in-out 0s infinite alternate;
+     -moz-animation: menuAni 0.5s ease-in-out 0s infinite alternate;
+       -o-animation: menuAni 0.5s ease-in-out 0s infinite alternate;
+          animation: menuAni 0.5s ease-in-out 0s infinite alternate;
+	}

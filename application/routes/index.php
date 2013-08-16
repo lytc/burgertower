@@ -1,14 +1,14 @@
 <?php
 
 $this->get('/', function() {
-   $this->display('index');
+    $this->display('index');
+
 });
 
 $this->post('/', function() {
-//    $facebook = new Facebook([
-//        'appId' => '282286475247846',
-//        'secret' => '9ccd871763a671f19bd574a26a6405a6'
-//    ]);
-//
-//    $signedRequest = $facebook->getSignedRequest();
+    $signedRequest = $this->getFacebook()->getSignedRequest();
+    $liked = !isset($signedRequest['page']['liked']) || isset($signedRequest['page']['liked']) && $signedRequest['page']['liked'];
+    $this->display('index', [
+        'liked' => $liked
+    ]);
 });

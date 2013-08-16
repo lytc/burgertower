@@ -3,8 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>KFC Burger Home</title>
-    <link rel="stylesheet" type="text/css" href="/assets/css/main_style.css"/>
-    <link rel="stylesheet" type="text/css" href="/assets/css/animate.css"/>
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/css/main_style.css"/>
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/css/animate.css"/>
 
     <?= $this->capture('stylesheets') ?>
 </head>
@@ -12,12 +12,16 @@
 <body>
 <div id="fb-root"></div>
 <?= $this->content() ?>
+<script>
+    var BASE_URL = '<?= BASE_URL ?>'
+        ,pageId = '<?= $pageId ?>'
+        ,appId = '<?= $facebook->getAppID() ?>';
+</script>
+<script type="text/javascript" src="<?= BASE_URL ?>/assets/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="<?= BASE_URL ?>/assets/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="<?= BASE_URL ?>/assets/js/script.js"></script>
 
-<script type="text/javascript" src="/assets/js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="/assets/js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="/assets/js/script.js"></script>
-
-<?= $this->javascriptTag('/assets/js/application') ?>
+<?= $this->javascriptTag(BASE_URL . '/assets/js/application') ?>
 <?= $this->capture('javascripts') ?>
 <script>
     var pageId = '<?= $pageId ?>'
