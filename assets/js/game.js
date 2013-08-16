@@ -560,7 +560,7 @@
                             method: 'feed',
                             picture: 'https://www.vietbuzzad.net/tower/assets/images/coverShare.jpg',
                             name: 'KFC Vietnam - Burger Tower',
-                            description: '??' + result.score
+                            caption: 'I just smashed ' + result.score + ' scores!'
                         }, function(response) {})
                     })
                 }, 1000)

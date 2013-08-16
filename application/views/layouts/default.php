@@ -3,8 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>KFC Burger Home</title>
-    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/css/main_style.css"/>
-    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/css/animate.css"/>
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/css/main_style.css?1"/>
+    <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/css/animate.css?1"/>
 
     <?= $this->capture('stylesheets') ?>
 </head>
@@ -19,7 +19,7 @@
 </script>
 <script type="text/javascript" src="<?= BASE_URL ?>/assets/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="<?= BASE_URL ?>/assets/js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="<?= BASE_URL ?>/assets/js/script.js"></script>
+<script type="text/javascript" src="<?= BASE_URL ?>/assets/js/script.js?1"></script>
 
 <?= $this->javascriptTag(BASE_URL . '/assets/js/application') ?>
 <?= $this->capture('javascripts') ?>
