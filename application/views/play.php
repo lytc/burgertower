@@ -123,7 +123,7 @@
                     <button type="submit" class="registSend">Hoàn tất</button>
                 </form>
             </div>
-            <div class="closeBtn"></div>
+            <div class="closeBtn" onclick="$('#register').fadeOut()"></div>
         </div>
         <div class="logoKFC"></div>
         <div class="burgerSymbol"></div>

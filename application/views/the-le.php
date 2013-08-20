@@ -68,7 +68,7 @@
             <div class="burgerSymbol"></div>
         </div>
         <div class="facebookLogo otherPos">
-            <img src="<?= BASE_URL ?>/assets/images/face_icon.png" class="faceIcon" />
+            <img src="<?= BASE_URL ?>/assets/images/face_icon.png" class="faceIcon share-fb" />
         </div>
         <div id="mainNav" class="bigBox_Menu">
             <ul class="mainNav">

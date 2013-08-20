@@ -8,7 +8,7 @@
         <div class="boardInfo topSix_bgn">
             <div class="logoKFC">
             	<a href="<?= BASE_URL ?>/">
-                    <img src="<?= BASE_URL ?>/assets/images/kfc_logo.png" />
+                    <img src="<?= BASE_URL ?>/assets/images/kfc_logo.png" class="share-fb" />
                 </a>
             </div>
             <div class="content">
@@ -26,7 +26,7 @@
                         <tbody>
                         <? foreach ($users as $user): ?>
                         <tr>
-                            <td><?= $this->escape($user->name) ?></td>
+                            <td><a href="<?= $user->facebookId ?>"><?= $this->escape($user->name) ?></a></td>
                             <td><?= $user->score ?></td>
                             <td><?= sprintf(gmdate('i %\s s %\s', $user->play_time), 'phút', 'giây') ?></td>
                         </tr>

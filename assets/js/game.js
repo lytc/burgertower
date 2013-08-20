@@ -140,12 +140,12 @@
             this.running = true
             var me = this
 
-            var stats = new Stats();
-
-            stats.domElement.style.position = 'fixed'
-            stats.domElement.style.right = 0
-            stats.domElement.style.top = 0
-            document.body.appendChild(stats.domElement)
+//            var stats = new Stats();
+//
+//            stats.domElement.style.position = 'fixed'
+//            stats.domElement.style.right = 0
+//            stats.domElement.style.top = 0
+//            document.body.appendChild(stats.domElement)
 
             this.addBurger()
 
@@ -155,7 +155,7 @@
                 lastTime = time
 
                 if (me.running) {
-                    stats.update()
+//                    stats.update()
                     raf(step)
                 }
             };
@@ -445,7 +445,7 @@
 
                 ,anchor3    = v(a.width * 2, 0)
                 ,anchor4    = v(b.width, 0)
-                ,joint2     = new cp.DampedSpring(a.body, b.body, anchor3, anchor4, restLength, this.springStiffness, this.springStiffness)
+                ,joint2     = new cp.DampedSpring(a.body, b.body, anchor3, anchor4, restLength, this.springStiffness, this.springDamping)
 
             joint1.errorBias = Math.pow(1 - .15, 60)
             joint2.errorBias = Math.pow(1 - .15, 60)
@@ -560,7 +560,7 @@
                             method: 'feed',
                             picture: 'https://www.vietbuzzad.net/tower/assets/images/coverShare.jpg',
                             name: 'KFC Vietnam - Burger Tower',
-                            caption: 'I just smashed ' + result.score + ' scores!'
+                            caption: 'Tôi vừa mới đạt được ' + result.score + ' điểm. Bạn hãy thử chơi xem!'
                         }, function(response) {})
                     })
                 }, 1000)
