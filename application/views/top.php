@@ -26,7 +26,7 @@
                         <tbody>
                         <? foreach ($users as $user): ?>
                         <tr>
-                            <td><a href="<?= $user->facebookId ?>"><?= $this->escape($user->name) ?></a></td>
+                            <td><a target="_blank" href="//facebook.com/<?= $user->facebookId ?>"><?= $this->escape($user->name) ?></a></td>
                             <td><?= $user->score ?></td>
                             <td><?= sprintf(gmdate('i %\s s %\s', $user->play_time), 'phút', 'giây') ?></td>
                         </tr>
