@@ -2,7 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>KFC Burger Home</title>
+    <meta property="fb:app_id" content="<?= $facebook->getAppID() ?>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.facebook.com/justfortestingst/app_<?= $facebook->getAppID() ?>/" />
+    <meta property="og:description" content="Xây tháp Burger, ăn KFC miễn phí, cơ hội chỉ có trong hè 2013 này." />
+    <meta property="og:image" content="http://www.vietbuzzad.net/tower/assets/images/coverShare.jpg" />
+    <title>KFC Vietnam - Burger Tower</title>
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/css/main_style.css?1"/>
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/assets/css/animate.css?1"/>
 
