@@ -23,14 +23,14 @@ class Application extends \Lazy\Application\Application
             }
 
             $this->view()->variables('pageId', $this->session('pageId'));
-            if ($request->isPost() && $request->param('signed_request') && $request->pathInfo() != '/') {
-                $this->redirect('index');
+//            if ($request->isPost() && $request->param('signed_request') && $request->pathInfo() != '/') {
+//                $this->redirect('index');
 //                if (!isset($signedRequest['page']['liked']) || !$signedRequest['page']['liked']) {
 //                    $this->redirect('index');
 //                } else {
 //                    $this->redirect('index');
 //                }
-            }
+//            }
 
             $this->view()->variables('facebook', $facebook);
 
@@ -61,7 +61,7 @@ class Application extends \Lazy\Application\Application
 
     public function requireSignIn() {
         if (!$this->session('user')) {
-            $this->redirect('/');
+            $this->redirect(BASE_URL? BASE_URL : '/');
         }
     }
 

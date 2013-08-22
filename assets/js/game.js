@@ -44,8 +44,8 @@
 
 
         this.stage = new PIXI.Stage()
-        this.renderer = PIXI.autoDetectRenderer(this.width, this.height, null, true)
-//        this.renderer = new PIXI.CanvasRenderer(this.width, this.height, null, true)
+//        this.renderer = PIXI.autoDetectRenderer(this.width, this.height, null, true)
+        this.renderer = new PIXI.CanvasRenderer(this.width, this.height, null, true)
         $('#playStage').append(this.renderer.view)
 
         this.deadBurgerCount = 0
@@ -317,7 +317,7 @@
                 if (me.gameOver) {
                     return
                 }
-                mouseBody.p.x = e.clientX - $(me.renderer.view).offset().left
+                mouseBody.p.x = e.pageX - $(me.renderer.view).offset().left
             })
         }
 
