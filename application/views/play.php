@@ -107,7 +107,7 @@
     </div>
 
     <div id="register" class="messPopup" style="display: none">
-		<div class="logoKFC">
+		<div class="logoKFC" style="z-index: 100;">
         	<a href="#">
                 <img src="<?= BASE_URL ?>/assets/images/kfc_logo.png" />
             </a>
