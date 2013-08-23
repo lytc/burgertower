@@ -50,6 +50,13 @@
 
 h1, h2, h3, h4 {
 	font-family: UTM_Cookies;}
+
+a, a:link {
+	text-decoration: none;
+	color: #C00;
+}
+a:active, a:hover {
+	color: #900;}
 .clear {
 	clear: both;}
 

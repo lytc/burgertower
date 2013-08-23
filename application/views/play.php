@@ -107,6 +107,11 @@
     </div>
 
     <div id="register" class="messPopup" style="display: none">
+		<div class="logoKFC">
+        	<a href="#">
+                <img src="<?= BASE_URL ?>/assets/images/kfc_logo.png" />
+            </a>
+        </div>
         <div class="popupBox">
             <div class="registCont">
                 <h3>Thông tin đăng ký</h3>
