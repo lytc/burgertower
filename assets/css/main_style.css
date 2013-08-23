@@ -507,7 +507,7 @@ div.cityLayer {
 	width: 588px;
 	height: 570px;
 	position:absolute;
-	z-index: 1000;
+	z-index: 1001;
 	display: block;
 	top: 85px;
 	left: 15px;
