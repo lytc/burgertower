@@ -17,7 +17,7 @@
     <div class="facebookLogo">
         <img src="<?= BASE_URL ?>/assets/images/face_icon.png" class="faceIcon share-fb" />
     </div>
-    <div class="playElement"></div>
+    <div class="playElement" style="display: none; visibility: hidden;"></div>
     <div class="layoutGame">
         <div class="colLeft">
             <div class="logoKFC">
